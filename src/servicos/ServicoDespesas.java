@@ -66,7 +66,15 @@ public class ServicoDespesas {
         conexao.close();
     }
     
-
+public void delete(Despesas despesas) throws SQLException{
+        Connection con = conexao.getConexao();  
+        try(PreparedStatement pst = con.prepareStatement
+            ("delete from despesas where id = ?")){
+            pst.setInt(1, despesas.getId());
+            pst.executeUpdate();            
+    }
+        
+    }
 
 
 }

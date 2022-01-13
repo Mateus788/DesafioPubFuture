@@ -48,6 +48,7 @@ public class FEditDespesas extends javax.swing.JFrame {
         jTipoComboDespesa = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jAtualizar = new javax.swing.JButton();
+        jDelet = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -108,6 +109,18 @@ public class FEditDespesas extends javax.swing.JFrame {
             }
         });
 
+        jDelet.setText("Deletar");
+        jDelet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDeletMouseClicked(evt);
+            }
+        });
+        jDelet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDeletActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,6 +130,8 @@ public class FEditDespesas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jAtualizar)
+                .addGap(31, 31, 31)
+                .addComponent(jDelet)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -143,7 +158,9 @@ public class FEditDespesas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
-                .addComponent(jAtualizar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jAtualizar)
+                    .addComponent(jDelet))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -235,6 +252,23 @@ public class FEditDespesas extends javax.swing.JFrame {
         }
    
     }//GEN-LAST:event_jAtualizarMouseClicked
+
+    private void jDeletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeletActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDeletActionPerformed
+
+    private void jDeletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDeletMouseClicked
+       if (jComboDespesas.getSelectedIndex() >= 0){
+            Despesas despesas = (Despesas) jComboDespesas.getSelectedItem();
+            try {
+                servicodespesas.delete(despesas);
+                JOptionPane.showMessageDialog(rootPane, "Despesas deletadas!!");
+            } catch (SQLException ex) {
+                Logger.getLogger(FEditDespesas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jDeletMouseClicked
+    
     private void atualizarListaDespesas() throws SQLException{
         if (jComboDespesas.getItemCount() > 0){
             jComboDespesas.removeAllItems();
@@ -295,6 +329,7 @@ public class FEditDespesas extends javax.swing.JFrame {
     private javax.swing.JTextField jConta;
     private javax.swing.JTextField jDataPagamento;
     private javax.swing.JTextField jDataPagamentoEsperado;
+    private javax.swing.JButton jDelet;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

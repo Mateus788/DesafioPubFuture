@@ -44,6 +44,7 @@ public class FEditContas extends javax.swing.JFrame {
         jComboTipoContas = new javax.swing.JComboBox<>();
         jAtualizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -93,6 +94,18 @@ public class FEditContas extends javax.swing.JFrame {
 
         jLabel1.setText("                                  Selecione a conta que deseja atualizar");
 
+        jDelete.setText("Deletar");
+        jDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDeleteMouseClicked(evt);
+            }
+        });
+        jDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,7 +128,9 @@ public class FEditContas extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jAtualizar)))
+                        .addComponent(jAtualizar)
+                        .addGap(30, 30, 30)
+                        .addComponent(jDelete)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -138,7 +153,9 @@ public class FEditContas extends javax.swing.JFrame {
                     .addComponent(jInstituicaoFinanceira, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jAtualizar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jAtualizar)
+                    .addComponent(jDelete))
                 .addGap(27, 27, 27))
         );
 
@@ -204,6 +221,22 @@ public class FEditContas extends javax.swing.JFrame {
         jInstituicaoFinanceira.setText(contas.getInstituicaoFinanceira());   
     }//GEN-LAST:event_jComboContasItemStateChanged
 
+    private void jDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDeleteActionPerformed
+
+    private void jDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDeleteMouseClicked
+       if (jComboContas.getSelectedIndex() >= 0){
+            Contas contas = (Contas) jComboContas.getSelectedItem();
+            try {
+                servicocontas.delete(contas);
+                JOptionPane.showMessageDialog(rootPane, "Contas deletadas!!");
+            } catch (SQLException ex) {
+                Logger.getLogger(FEditContas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jDeleteMouseClicked
+
     
     
     /**
@@ -245,6 +278,7 @@ public class FEditContas extends javax.swing.JFrame {
     private javax.swing.JButton jAtualizar;
     private javax.swing.JComboBox<Contas> jComboContas;
     private javax.swing.JComboBox<String> jComboTipoContas;
+    private javax.swing.JButton jDelete;
     private javax.swing.JTextField jInstituicaoFinanceira;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -50,6 +50,7 @@ public class FEditReceitas extends javax.swing.JFrame {
         jDataRecebimento = new javax.swing.JTextField();
         jDataRecebimentoEsperado = new javax.swing.JTextField();
         jAtualizar = new javax.swing.JButton();
+        jDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -95,6 +96,18 @@ public class FEditReceitas extends javax.swing.JFrame {
             }
         });
 
+        jDelete.setText("Deletar");
+        jDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDeleteMouseClicked(evt);
+            }
+        });
+        jDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,6 +143,8 @@ public class FEditReceitas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jAtualizar)
+                .addGap(35, 35, 35)
+                .addComponent(jDelete)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -163,7 +178,9 @@ public class FEditReceitas extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jComboTipoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jAtualizar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jAtualizar)
+                    .addComponent(jDelete))
                 .addGap(44, 44, 44))
         );
 
@@ -222,6 +239,23 @@ public class FEditReceitas extends javax.swing.JFrame {
         }
    
     }//GEN-LAST:event_jAtualizarMouseClicked
+
+    private void jDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDeleteActionPerformed
+
+    private void jDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDeleteMouseClicked
+        if (jComboReceita.getSelectedIndex() >= 0){
+            Receita receita = (Receita) jComboReceita.getSelectedItem();
+            try {
+                servicoreceita.delete(receita);
+                JOptionPane.showMessageDialog(rootPane, "Receita deletada!!");
+            } catch (SQLException ex) {
+                Logger.getLogger(FEditReceitas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }  
+    }//GEN-LAST:event_jDeleteMouseClicked
+    
     private void atualizarListaReceita() throws SQLException{
         if (jComboReceita.getItemCount() > 0){
             jComboReceita.removeAllItems();
@@ -288,6 +322,7 @@ public class FEditReceitas extends javax.swing.JFrame {
     private javax.swing.JTextField jConta;
     private javax.swing.JTextField jDataRecebimento;
     private javax.swing.JTextField jDataRecebimentoEsperado;
+    private javax.swing.JButton jDelete;
     private javax.swing.JTextField jDescricao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -70,6 +70,14 @@ public class ServicoReceita {
         conexao.close();
     }
     
-    
+    public void delete(Receita receita) throws SQLException{
+        Connection con = conexao.getConexao();  
+        try(PreparedStatement pst = con.prepareStatement
+            ("delete from receitas where id = ?")){
+            pst.setInt(1, receita.getId());
+            pst.executeUpdate();            
+    }
+        
+    }
     
 }
