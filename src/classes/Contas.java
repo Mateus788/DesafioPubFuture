@@ -1,25 +1,35 @@
 package classes;
 
 public class Contas {
-    private float Saldo;
+    private int id;
+    private float saldo;
     private String tipoContas;
     private String instituicaoFinanceira;
-   
-    public Contas() {
-    }
 
-    public Contas(float Saldo, String tipoContas, String instituicaoFinanceira) {
-        this.Saldo = Saldo;
+    public Contas(int id, float saldo, String tipoContas, String instituicaoFinanceira) {
+        this.id = id;
+        this.saldo = saldo;
         this.tipoContas = tipoContas;
         this.instituicaoFinanceira = instituicaoFinanceira;
     }
 
-    public float getSaldo() {
-        return Saldo;
+    public Contas() {
     }
 
-    public void setSaldo(float Saldo) {
-        this.Saldo = Saldo;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public float getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(float saldo) {
+        this.saldo = saldo;
     }
 
     public String getTipoContas() {
@@ -37,5 +47,14 @@ public class Contas {
     public void setInstituicaoFinanceira(String instituicaoFinanceira) {
         this.instituicaoFinanceira = instituicaoFinanceira;
     }
+
+
+    
+    @Override
+    public String toString() {
+        return "Saldo: " + this.saldo + " Tipo Conta: " + this.tipoContas;
+    }
+    
+    
     
 }

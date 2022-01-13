@@ -1,8 +1,7 @@
 package classes;
 
-import java.util.Date;
-
 public class Receita {
+    private int id;
     private float valor;
     private String dataRecebimento;
     private String dataRecebimentoEsperado;
@@ -10,16 +9,25 @@ public class Receita {
     private String conta;
     private String tipoReceitas;
 
-    public Receita() {
-    }
-
-    public Receita(float valor, String dataRecebimento, String dataRecebimentoEsperado, String descricao, String conta, String tipoReceitas) {
+    public Receita(int id, float valor, String dataRecebimento, String dataRecebimentoEsperado, String descricao, String conta, String tipoReceitas) {
+        this.id = id;
         this.valor = valor;
         this.dataRecebimento = dataRecebimento;
         this.dataRecebimentoEsperado = dataRecebimentoEsperado;
         this.descricao = descricao;
         this.conta = conta;
         this.tipoReceitas = tipoReceitas;
+    }
+
+    public Receita() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public float getValor() {
@@ -70,4 +78,15 @@ public class Receita {
         this.tipoReceitas = tipoReceitas;
     }
 
+    
+
+    @Override
+    public String toString() {
+        return "Conta: " + this.conta + " Tipo de Receita: " + this.tipoReceitas + " Valor: " + this.valor;
+    }
+
+    
+    
+
+    
 }

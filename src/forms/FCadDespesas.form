@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jEnviarDespesas" min="-2" max="-2" attributes="0"/>
+              <Component id="jEnviar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jSair" min="-2" max="-2" attributes="0"/>
           </Group>
@@ -88,7 +88,7 @@
               </Group>
               <EmptySpace pref="124" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jEnviarDespesas" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jEnviar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jSair" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -102,13 +102,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jValorActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jEnviarDespesas">
+    <Component class="javax.swing.JButton" name="jEnviar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Enviar"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jEnviarDespesasMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jEnviarDespesasActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jEnviarMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jEnviarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="jTipoComboDespesa">

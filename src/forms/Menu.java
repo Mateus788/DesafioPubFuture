@@ -22,6 +22,12 @@ public class Menu extends javax.swing.JFrame {
     public FCadDespesas fcaddespesas;
     
     public FCadContas fcadcontas;
+    
+    public FEditReceitas feditreceitas;
+    
+    public FEditDespesas feditdespesas;
+    
+    public FEditContas feditcontas;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,6 +44,9 @@ public class Menu extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         jMenuBar4 = new javax.swing.JMenuBar();
@@ -45,6 +54,10 @@ public class Menu extends javax.swing.JFrame {
         jDespesas = new javax.swing.JMenuItem();
         jCadReceitas = new javax.swing.JMenuItem();
         jContas = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jEditReceitas = new javax.swing.JMenuItem();
+        jEditDespesas = new javax.swing.JMenuItem();
+        jEDitContas = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar2.add(jMenu1);
@@ -59,6 +72,12 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar3.add(jMenu4);
 
         jToggleButton1.setText("jToggleButton1");
+
+        jMenu5.setText("File");
+        jMenuBar1.add(jMenu5);
+
+        jMenu6.setText("Edit");
+        jMenuBar1.add(jMenu6);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +113,34 @@ public class Menu extends javax.swing.JFrame {
         jcadastro.add(jContas);
 
         jMenuBar4.add(jcadastro);
+
+        jMenu7.setText("Editar");
+
+        jEditReceitas.setText("Receitas");
+        jEditReceitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEditReceitasActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jEditReceitas);
+
+        jEditDespesas.setText("Despesas");
+        jEditDespesas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEditDespesasActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jEditDespesas);
+
+        jEDitContas.setText("Contas");
+        jEDitContas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEDitContasActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jEDitContas);
+
+        jMenuBar4.add(jMenu7);
 
         setJMenuBar(jMenuBar4);
 
@@ -138,6 +185,27 @@ public class Menu extends javax.swing.JFrame {
         fcadcontas.setVisible(true);
     }//GEN-LAST:event_jContasActionPerformed
 
+    private void jEditReceitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEditReceitasActionPerformed
+     if (feditreceitas== null){
+            feditreceitas = new FEditReceitas();
+        }
+        feditreceitas.setVisible(true);
+    }//GEN-LAST:event_jEditReceitasActionPerformed
+
+    private void jEditDespesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEditDespesasActionPerformed
+     if (feditdespesas== null){
+            feditdespesas = new FEditDespesas();
+        }
+        feditdespesas.setVisible(true);
+    }//GEN-LAST:event_jEditDespesasActionPerformed
+
+    private void jEDitContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEDitContasActionPerformed
+     if (feditcontas== null){
+            feditcontas = new FEditContas();
+        }
+        feditcontas.setVisible(true);   
+    }//GEN-LAST:event_jEDitContasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -177,11 +245,18 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jCadReceitas;
     private javax.swing.JMenuItem jContas;
     private javax.swing.JMenuItem jDespesas;
+    private javax.swing.JMenuItem jEDitContas;
+    private javax.swing.JMenuItem jEditDespesas;
+    private javax.swing.JMenuItem jEditReceitas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuBar jMenuBar4;

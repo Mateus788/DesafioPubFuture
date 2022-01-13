@@ -1,25 +1,33 @@
 package classes;
 
-import java.util.Date;
-
 public class Despesas {
+    private int id;
     private float valor;
     private String dataPagamento;
     private String dataPagamentoEsperado;
     private String tipoDespesa;
     private String conta;
 
-    public Despesas() {
-    }
-
-    public Despesas(float valor, String dataPagamento, String dataPagamentoEsperado, String tipoDespesa, String conta) {
+    public Despesas(int id, float valor, String dataPagamento, String dataPagamentoEsperado, String tipoDespesa, String conta) {
+        this.id = id;
         this.valor = valor;
         this.dataPagamento = dataPagamento;
         this.dataPagamentoEsperado = dataPagamentoEsperado;
         this.tipoDespesa = tipoDespesa;
         this.conta = conta;
     }
-
+    
+    public Despesas() {
+    }
+    
+    public int getId() {
+        return id;  
+    }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public float getValor() {
         return valor;
     }
@@ -59,5 +67,11 @@ public class Despesas {
     public void setConta(String conta) {
         this.conta = conta;
     }
+
+    @Override
+    public String toString() {
+        return "Tipo de Despesa: " + this.tipoDespesa + " Conta: " + this.conta + " Valor: " + this.valor;
+    }
+    
     
 }

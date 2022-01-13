@@ -34,7 +34,7 @@ public class FCadDespesas extends javax.swing.JFrame {
     private void initComponents() {
 
         jValor = new javax.swing.JTextField();
-        jEnviarDespesas = new javax.swing.JButton();
+        jEnviar = new javax.swing.JButton();
         jTipoComboDespesa = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -58,15 +58,15 @@ public class FCadDespesas extends javax.swing.JFrame {
             }
         });
 
-        jEnviarDespesas.setText("Enviar");
-        jEnviarDespesas.addMouseListener(new java.awt.event.MouseAdapter() {
+        jEnviar.setText("Enviar");
+        jEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jEnviarDespesasMouseClicked(evt);
+                jEnviarMouseClicked(evt);
             }
         });
-        jEnviarDespesas.addActionListener(new java.awt.event.ActionListener() {
+        jEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jEnviarDespesasActionPerformed(evt);
+                jEnviarActionPerformed(evt);
             }
         });
 
@@ -118,7 +118,7 @@ public class FCadDespesas extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jEnviarDespesas)
+                .addComponent(jEnviar)
                 .addGap(18, 18, 18)
                 .addComponent(jSair))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -170,7 +170,7 @@ public class FCadDespesas extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jEnviarDespesas)
+                    .addComponent(jEnviar)
                     .addComponent(jSair))
                 .addContainerGap())
         );
@@ -194,11 +194,11 @@ public class FCadDespesas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTipoComboDespesaActionPerformed
 
-    private void jEnviarDespesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEnviarDespesasActionPerformed
+    private void jEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEnviarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jEnviarDespesasActionPerformed
+    }//GEN-LAST:event_jEnviarActionPerformed
 
-    private void jEnviarDespesasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEnviarDespesasMouseClicked
+    private void jEnviarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEnviarMouseClicked
         Despesas despesas = new Despesas();
        despesas.setValor(Float.parseFloat(jValor.getText()));
        despesas.setDataPagamento(jDataPagamento.getText());
@@ -216,7 +216,7 @@ public class FCadDespesas extends javax.swing.JFrame {
         }
             
         
-    }//GEN-LAST:event_jEnviarDespesasMouseClicked
+    }//GEN-LAST:event_jEnviarMouseClicked
    
     private void jSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSairMouseClicked
            dispose();
@@ -269,7 +269,7 @@ public class FCadDespesas extends javax.swing.JFrame {
     private javax.swing.JTextField jConta;
     private javax.swing.JTextField jDataPagamento;
     private javax.swing.JTextField jDataPagamentoEsperado;
-    private javax.swing.JButton jEnviarDespesas;
+    private javax.swing.JButton jEnviar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
