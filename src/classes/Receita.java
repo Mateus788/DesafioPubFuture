@@ -4,22 +4,22 @@ import java.util.Date;
 
 public class Receita {
     private float valor;
-    private Date dataRecebimento;
-    private Date dataRecebimentoEsperado;
+    private String dataRecebimento;
+    private String dataRecebimentoEsperado;
     private String descricao;
     private String conta;
     private String tipoReceitas;
 
-    public Receita(float valor, Date dataRecebimento, Date dataRecebimentoEsperado, String descricao, String conta, String tipoReceitas) {
+    public Receita() {
+    }
+
+    public Receita(float valor, String dataRecebimento, String dataRecebimentoEsperado, String descricao, String conta, String tipoReceitas) {
         this.valor = valor;
         this.dataRecebimento = dataRecebimento;
         this.dataRecebimentoEsperado = dataRecebimentoEsperado;
         this.descricao = descricao;
         this.conta = conta;
         this.tipoReceitas = tipoReceitas;
-    }
-
-    public Receita() {
     }
 
     public float getValor() {
@@ -30,19 +30,19 @@ public class Receita {
         this.valor = valor;
     }
 
-    public Date getDataRecebimento() {
+    public String getDataRecebimento() {
         return dataRecebimento;
     }
 
-    public void setDataRecebimento(Date dataRecebimento) {
+    public void setDataRecebimento(String dataRecebimento) {
         this.dataRecebimento = dataRecebimento;
     }
 
-    public Date getDataRecebimentoEsperado() {
+    public String getDataRecebimentoEsperado() {
         return dataRecebimentoEsperado;
     }
 
-    public void setDataRecebimentoEsperado(Date dataRecebimentoEsperado) {
+    public void setDataRecebimentoEsperado(String dataRecebimentoEsperado) {
         this.dataRecebimentoEsperado = dataRecebimentoEsperado;
     }
 

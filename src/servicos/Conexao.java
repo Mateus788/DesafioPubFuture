@@ -10,11 +10,11 @@ public Connection connection;
 //driver, DRIVER = banco de dados, URL referente ao caminho
 public Connection getConexao(){
     final String DRIVER = "com.mysql.cj.jdbc.Driver";
-   final String URL = "jdbc:mysql://127.0.0.1:3306/'CRIAR O BANCO'";
+   final String URL = "jdbc:mysql://localhost:3306/financas";
  // tenta a conexao, root e root como usuário e senha   
     try{
         Class.forName(DRIVER);
-       connection = DriverManager.getConnection(URL, "root","root");
+       connection = DriverManager.getConnection(URL, "root","Pepeta2002");
         return connection;
     }catch(ClassNotFoundException e){
         JOptionPane.showMessageDialog(null, "Driver não encontrado: " + e.toString());
