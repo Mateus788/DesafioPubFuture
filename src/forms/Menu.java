@@ -28,6 +28,8 @@ public class Menu extends javax.swing.JFrame {
     public FEditDespesas feditdespesas;
     
     public FEditContas feditcontas;
+    
+    public FConsultPeriodo fconsultperiodo;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,6 +49,10 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuBar5 = new javax.swing.JMenuBar();
+        jMenu8 = new javax.swing.JMenu();
+        jMenu9 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         jMenuBar4 = new javax.swing.JMenuBar();
@@ -58,6 +64,10 @@ public class Menu extends javax.swing.JFrame {
         jEditReceitas = new javax.swing.JMenuItem();
         jEditDespesas = new javax.swing.JMenuItem();
         jEDitContas = new javax.swing.JMenuItem();
+        jMenu10 = new javax.swing.JMenu();
+        jMenu11 = new javax.swing.JMenu();
+        jConsultPeriodoReceitas = new javax.swing.JMenuItem();
+        jConsultTipoReceitas = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar2.add(jMenu1);
@@ -78,6 +88,14 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu6.setText("Edit");
         jMenuBar1.add(jMenu6);
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenu8.setText("File");
+        jMenuBar5.add(jMenu8);
+
+        jMenu9.setText("Edit");
+        jMenuBar5.add(jMenu9);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,6 +159,25 @@ public class Menu extends javax.swing.JFrame {
         jMenu7.add(jEDitContas);
 
         jMenuBar4.add(jMenu7);
+
+        jMenu10.setText("Consultas");
+
+        jMenu11.setText("Receitas");
+
+        jConsultPeriodoReceitas.setText("Período");
+        jConsultPeriodoReceitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConsultPeriodoReceitasActionPerformed(evt);
+            }
+        });
+        jMenu11.add(jConsultPeriodoReceitas);
+
+        jConsultTipoReceitas.setText("Tipo");
+        jMenu11.add(jConsultTipoReceitas);
+
+        jMenu10.add(jMenu11);
+
+        jMenuBar4.add(jMenu10);
 
         setJMenuBar(jMenuBar4);
 
@@ -206,6 +243,13 @@ public class Menu extends javax.swing.JFrame {
         feditcontas.setVisible(true);   
     }//GEN-LAST:event_jEDitContasActionPerformed
 
+    private void jConsultPeriodoReceitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultPeriodoReceitasActionPerformed
+     if (fconsultperiodo== null){
+            fconsultperiodo = new FConsultPeriodo();
+        }
+        fconsultperiodo.setVisible(true);   
+    }//GEN-LAST:event_jConsultPeriodoReceitasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,6 +287,8 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jCadReceitas;
+    private javax.swing.JMenuItem jConsultPeriodoReceitas;
+    private javax.swing.JMenuItem jConsultTipoReceitas;
     private javax.swing.JMenuItem jContas;
     private javax.swing.JMenuItem jDespesas;
     private javax.swing.JMenuItem jEDitContas;
@@ -250,16 +296,22 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jEditReceitas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuBar jMenuBar4;
+    private javax.swing.JMenuBar jMenuBar5;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu jcadastro;
