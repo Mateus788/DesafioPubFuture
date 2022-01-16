@@ -29,7 +29,9 @@ public class Menu extends javax.swing.JFrame {
     
     public FEditContas feditcontas;
     
-    public FConsultPeriodo fconsultperiodo;
+    public FConsultPeriodoReceita fconsultperiodoreceita;
+    
+    public FConsultTipoReceita fconsulttiporeceita;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -173,6 +175,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu11.add(jConsultPeriodoReceitas);
 
         jConsultTipoReceitas.setText("Tipo");
+        jConsultTipoReceitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConsultTipoReceitasActionPerformed(evt);
+            }
+        });
         jMenu11.add(jConsultTipoReceitas);
 
         jMenu10.add(jMenu11);
@@ -244,11 +251,18 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jEDitContasActionPerformed
 
     private void jConsultPeriodoReceitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultPeriodoReceitasActionPerformed
-     if (fconsultperiodo== null){
-            fconsultperiodo = new FConsultPeriodo();
+     if (fconsultperiodoreceita== null){
+            fconsultperiodoreceita = new FConsultPeriodoReceita();
         }
-        fconsultperiodo.setVisible(true);   
+        fconsultperiodoreceita.setVisible(true);   
     }//GEN-LAST:event_jConsultPeriodoReceitasActionPerformed
+
+    private void jConsultTipoReceitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultTipoReceitasActionPerformed
+     if (fconsulttiporeceita== null){
+            fconsulttiporeceita = new FConsultTipoReceita();
+        }
+        fconsulttiporeceita.setVisible(true);
+    }//GEN-LAST:event_jConsultTipoReceitasActionPerformed
 
     /**
      * @param args the command line arguments

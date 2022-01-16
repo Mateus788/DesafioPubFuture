@@ -100,6 +100,24 @@ public class ServicoReceita {
         
         
     }
+    
+    public ArrayList<Receita> getReceitasByTipo(String tipo) throws SQLException{
+        Connection con = conexao.getConexao();
+        ArrayList<Receita> lista = new ArrayList<>();
+        
+        Statement st = conexao.getConexao().createStatement();
+        ResultSet rs = st.executeQuery(
+                "select * from receitas, contas where tipoReceitas = '" + tipo + "' and receitas.conta_id = contas.id_contas" 
+        );
+        
+        while (rs.next()){
+          lista.add(new Receita(rs.getInt("id_receitas"), rs.getFloat("valor"), rs.getString("dataRecebimento"), 
+                  rs.getString("dataRecebimentoEsperado"), rs.getString("descricao"),new Contas(rs.getInt("id_contas"), rs.getFloat("saldo"), rs.getString("tipoContas"), rs.getString("instituicaoFinanceira")), 
+                  rs.getString("tipoReceitas")));
+        }
+        conexao.close();
+        return lista;       
+    }
         
     
 }
