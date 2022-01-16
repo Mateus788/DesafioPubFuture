@@ -38,19 +38,18 @@ public class FEditReceitas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jComboReceita = new javax.swing.JComboBox<>();
         jDescricao = new javax.swing.JTextField();
-        jConta = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jComboTipoReceita = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jValor = new javax.swing.JTextField();
         jDataRecebimento = new javax.swing.JTextField();
         jDataRecebimentoEsperado = new javax.swing.JTextField();
         jAtualizar = new javax.swing.JButton();
         jDelete = new javax.swing.JButton();
+        jSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -85,8 +84,6 @@ public class FEditReceitas extends javax.swing.JFrame {
 
         jLabel5.setText("Descricao");
 
-        jLabel6.setText("Conta");
-
         jLabel7.setText("Tipo Receita");
 
         jAtualizar.setText("Atualizar");
@@ -108,44 +105,54 @@ public class FEditReceitas extends javax.swing.JFrame {
             }
         });
 
+        jSair.setText("Sair");
+        jSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jSairMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jComboReceita, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(jLabel1)
-                        .addGap(0, 125, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jAtualizar)
+                                .addGap(35, 35, 35)
+                                .addComponent(jDelete)
+                                .addGap(18, 18, 18)
+                                .addComponent(jSair)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(129, 129, 129)
+                                .addComponent(jComboTipoReceita, 0, 236, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jDataRecebimentoEsperado, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
-                                .addComponent(jDataRecebimento)
-                                .addComponent(jValor))
-                            .addComponent(jComboTipoReceita, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jConta)
-                            .addComponent(jDescricao))))
+                            .addComponent(jComboReceita, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addGap(45, 45, 45)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jDataRecebimentoEsperado, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                                        .addComponent(jDataRecebimento)
+                                        .addComponent(jValor))
+                                    .addComponent(jDescricao))))))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jAtualizar)
-                .addGap(35, 35, 35)
-                .addComponent(jDelete)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,16 +178,13 @@ public class FEditReceitas extends javax.swing.JFrame {
                     .addComponent(jDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jComboTipoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jAtualizar)
-                    .addComponent(jDelete))
+                    .addComponent(jDelete)
+                    .addComponent(jSair))
                 .addGap(44, 44, 44))
         );
 
@@ -210,7 +214,6 @@ public class FEditReceitas extends javax.swing.JFrame {
         jDataRecebimento.setText(receita.getDataRecebimento());
         jDataRecebimentoEsperado.setText(receita.getDataRecebimentoEsperado());
         jDescricao.setText(receita.getDescricao());
-        jConta.setText(receita.getConta());
         jComboTipoReceita.setSelectedItem(receita.getTipoReceitas());
 
     }//GEN-LAST:event_jComboReceitaItemStateChanged
@@ -222,7 +225,6 @@ public class FEditReceitas extends javax.swing.JFrame {
     private void jAtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAtualizarMouseClicked
         if (jComboReceita.getSelectedIndex() >= 0){
             Receita receita = (Receita) jComboReceita.getSelectedItem();
-            receita.setConta(jConta.getText());
             receita.setDataRecebimento(jDataRecebimento.getText());
             receita.setDataRecebimentoEsperado(jDataRecebimentoEsperado.getText());
             receita.setDescricao(jDescricao.getText());
@@ -255,6 +257,10 @@ public class FEditReceitas extends javax.swing.JFrame {
             }
         }  
     }//GEN-LAST:event_jDeleteMouseClicked
+
+    private void jSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSairMouseClicked
+        dispose();
+    }//GEN-LAST:event_jSairMouseClicked
     
     private void atualizarListaReceita() throws SQLException{
         if (jComboReceita.getItemCount() > 0){
@@ -274,7 +280,6 @@ public class FEditReceitas extends javax.swing.JFrame {
         jDataRecebimento.setText("");
         jDataRecebimentoEsperado.setText("");
         jDescricao.setText("");
-        jConta.setText("");
         jComboReceita.setSelectedIndex(-1);
         jComboTipoReceita.setSelectedIndex(-1);
         
@@ -319,7 +324,6 @@ public class FEditReceitas extends javax.swing.JFrame {
     private javax.swing.JButton jAtualizar;
     private javax.swing.JComboBox<Receita> jComboReceita;
     private javax.swing.JComboBox<String> jComboTipoReceita;
-    private javax.swing.JTextField jConta;
     private javax.swing.JTextField jDataRecebimento;
     private javax.swing.JTextField jDataRecebimentoEsperado;
     private javax.swing.JButton jDelete;
@@ -329,8 +333,8 @@ public class FEditReceitas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton jSair;
     private javax.swing.JTextField jValor;
     // End of variables declaration//GEN-END:variables
 }

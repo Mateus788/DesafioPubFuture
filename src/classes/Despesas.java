@@ -6,9 +6,9 @@ public class Despesas {
     private String dataPagamento;
     private String dataPagamentoEsperado;
     private String tipoDespesa;
-    private String conta;
+    private Contas conta;
 
-    public Despesas(int id, float valor, String dataPagamento, String dataPagamentoEsperado, String tipoDespesa, String conta) {
+    public Despesas(int id, float valor, String dataPagamento, String dataPagamentoEsperado, String tipoDespesa, Contas conta) {
         this.id = id;
         this.valor = valor;
         this.dataPagamento = dataPagamento;
@@ -16,18 +16,18 @@ public class Despesas {
         this.tipoDespesa = tipoDespesa;
         this.conta = conta;
     }
-    
+
     public Despesas() {
     }
-    
+
     public int getId() {
-        return id;  
+        return id;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public float getValor() {
         return valor;
     }
@@ -60,17 +60,18 @@ public class Despesas {
         this.tipoDespesa = tipoDespesa;
     }
 
-    public String getConta() {
+    public Contas getConta() {
         return conta;
     }
 
-    public void setConta(String conta) {
+    public void setConta(Contas conta) {
         this.conta = conta;
     }
 
+    
     @Override
     public String toString() {
-        return "Tipo de Despesa: " + this.tipoDespesa + " Conta: " + this.conta + " Valor: " + this.valor;
+        return "Tipo de Despesa: " + this.tipoDespesa + " Conta: " + this.conta.getId() + " Valor: " + this.valor;
     }
     
     

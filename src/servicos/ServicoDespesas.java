@@ -1,6 +1,7 @@
 package servicos;
 
 import classes.Despesas;
+import classes.Contas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,15 +17,15 @@ public class ServicoDespesas {
         Connection con = conexao.getConexao();
 
         try(PreparedStatement pst = con.prepareStatement(
-                   "insert into Despesas(id, valor, dataPagamento, "
-                           + "dataPagamentoEsperado,tipoDespesa,Conta) "
+                   "insert into Despesas(id_despesas, valor, dataPagamento, "
+                           + "dataPagamentoEsperado,tipoDespesa,conta_id) "
                            + "values (0, ?, ?, ?, ?, ?)"
            )){
             pst.setFloat(1, despesas.getValor());
             pst.setString(2, despesas.getDataPagamento());
             pst.setString(3, despesas.getDataPagamentoEsperado());
             pst.setString(4, despesas.getTipoDespesa());
-            pst.setString(5, despesas.getConta());
+            pst.setInt(5, despesas.getConta().getId());
             pst.executeUpdate();
          }
 
@@ -40,12 +41,12 @@ public class ServicoDespesas {
         
         Statement st = conexao.getConexao().createStatement();
         ResultSet rs = st.executeQuery(
-                "Select * from despesas"
+                "select * from despesas, contas where despesas.conta_id = contas.id_contas"
         );
         
         while (rs.next()){
-          lista.add(new Despesas(rs.getInt("id"), rs.getFloat("valor"), rs.getString("dataPagamento"), 
-                  rs.getString("dataPagamentoEsperado"), rs.getString("tipoDespesa"), rs.getString("conta")));
+          lista.add(new Despesas(rs.getInt("id_despesas"), rs.getFloat("valor"), rs.getString("dataPagamento"), 
+                  rs.getString("dataPagamentoEsperado"), rs.getString("tipoDespesa"), new Contas(rs.getInt("id_contas"), rs.getFloat("saldo"), rs.getString("tipoContas"), rs.getString("instituicaoFinanceira"))));
         }
         conexao.close();
         return lista;
@@ -54,31 +55,31 @@ public class ServicoDespesas {
     public void update(Despesas depesas) throws SQLException {
         Connection con = conexao.getConexao();    
         try (PreparedStatement pst = con.prepareStatement
-            ("update despesas set valor = ?, dataPagamento = ?, dataPagamentoEsperado = ?, tipoDespesa = ?, conta = ? where id = ?")) {
+            ("update despesas set valor = ?, dataPagamento = ?, "
+                    + "dataPagamentoEsperado = ?, tipoDespesa = ?, conta_id = ?"
+                    + " where id_despesas = ?")) {
         pst.setFloat(1, depesas.getValor());
         pst.setString(2, depesas.getDataPagamento());
         pst.setString(3, depesas.getDataPagamentoEsperado());
         pst.setString(4, depesas.getTipoDespesa());
-        pst.setString(5, depesas.getConta());
+        pst.setInt(5, depesas.getConta().getId());
         pst.setInt(6, depesas.getId());
         pst.executeUpdate();
         }
         conexao.close();
     }
     
-public void delete(Despesas despesas) throws SQLException{
-        Connection con = conexao.getConexao();  
-        try(PreparedStatement pst = con.prepareStatement
-            ("delete from despesas where id = ?")){
-            pst.setInt(1, despesas.getId());
-            pst.executeUpdate();            
+    public void delete(Despesas despesas) throws SQLException{
+            Connection con = conexao.getConexao();  
+            try(PreparedStatement pst = con.prepareStatement
+                ("delete from despesas where id_despesas = ?")){
+                pst.setInt(1, despesas.getId());
+                pst.executeUpdate();            
+        }
+
+        }
     }
-        
-    }
 
 
-}
 
-
-    
     

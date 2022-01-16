@@ -45,6 +45,7 @@ public class FEditContas extends javax.swing.JFrame {
         jAtualizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jDelete = new javax.swing.JButton();
+        jSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -106,6 +107,13 @@ public class FEditContas extends javax.swing.JFrame {
             }
         });
 
+        jSair.setText("Sair");
+        jSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jSairMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,7 +138,9 @@ public class FEditContas extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jAtualizar)
                         .addGap(30, 30, 30)
-                        .addComponent(jDelete)))
+                        .addComponent(jDelete)
+                        .addGap(18, 18, 18)
+                        .addComponent(jSair)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -155,7 +165,8 @@ public class FEditContas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jAtualizar)
-                    .addComponent(jDelete))
+                    .addComponent(jDelete)
+                    .addComponent(jSair))
                 .addGap(27, 27, 27))
         );
 
@@ -237,6 +248,10 @@ public class FEditContas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jDeleteMouseClicked
 
+    private void jSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSairMouseClicked
+        dispose();
+    }//GEN-LAST:event_jSairMouseClicked
+
     
     
     /**
@@ -284,11 +299,12 @@ public class FEditContas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton jSair;
     private javax.swing.JTextField jSaldo;
     // End of variables declaration//GEN-END:variables
 
     private void atualizarListaContas() throws SQLException {
-         if (jComboContas.getItemCount() > 0){
+        if (jComboContas.getItemCount() > 0){
             jComboContas.removeAllItems();
         }
 

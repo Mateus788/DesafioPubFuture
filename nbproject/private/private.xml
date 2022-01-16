@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Pichau/Documents/ProjetoProway/src/forms/FEditContas.java</file>
-            <file>file:/C:/Users/Pichau/Documents/ProjetoProway/src/forms/FEditReceitas.java</file>
+            <file>file:/C:/Users/Pichau/Documents/ProjetoProway/src/servicos/ServicoContas.java</file>
+            <file>file:/C:/Users/Pichau/Documents/ProjetoProway/src/servicos/ServicoDespesas.java</file>
+            <file>file:/C:/Users/Pichau/Documents/ProjetoProway/src/classes/Despesas.java</file>
+            <file>file:/C:/Users/Pichau/Documents/ProjetoProway/src/forms/FCadDespesas.java</file>
+            <file>file:/C:/Users/Pichau/Documents/ProjetoProway/src/classes/Contas.java</file>
             <file>file:/C:/Users/Pichau/Documents/ProjetoProway/src/forms/FEditDespesas.java</file>
         </group>
     </open-files>

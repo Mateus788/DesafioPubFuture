@@ -15,7 +15,7 @@ public class ServicoContas {
         Connection con = (Connection) conexao.getConexao();
 
         try(PreparedStatement pst = con.prepareStatement(
-                   "insert into Contas(id, saldo, tipoContas, "
+                   "insert into Contas(id_contas, saldo, tipoContas, "
                            + "instituicaoFinanceira) "
                            + "values (0, ?, ?, ?)"
            )){
@@ -41,7 +41,7 @@ public class ServicoContas {
         );
         
         while (rs.next()){
-          lista.add(new Contas(rs.getInt("id"), rs.getFloat("saldo"), rs.getString("tipoContas"), 
+          lista.add(new Contas(rs.getInt("id_contas"), rs.getFloat("saldo"), rs.getString("tipoContas"), 
                   rs.getString("instituicaoFinanceira")));
         }
         conexao.close();
@@ -51,7 +51,7 @@ public class ServicoContas {
     public void update(Contas contas) throws SQLException {
         Connection con = conexao.getConexao();    
         try (PreparedStatement pst = con.prepareStatement
-            ("update contas set saldo = ?, tipoContas = ?, instituicaoFinanceira = ? where id = ?")) {
+            ("update contas set saldo = ?, tipoContas = ?, instituicaoFinanceira = ? where id_contas = ?")) {
         pst.setFloat(1, contas.getSaldo());
         pst.setString(2, contas.getTipoContas());
         pst.setString(3, contas.getInstituicaoFinanceira());
@@ -61,10 +61,21 @@ public class ServicoContas {
         conexao.close();
     }
     
+    public Contas getConta(Contas contas) throws SQLException{
+        Connection con = conexao.getConexao();  
+        Statement st = conexao.getConexao().createStatement();
+        ResultSet rs = st.executeQuery(
+                "Select * from contas where id_contas = " + contas.getId());
+        
+        Contas conta = new Contas(rs.getInt("id_contas"), rs.getFloat("saldo"), rs.getString("tipoContas"), 
+                  rs.getString("instituicaoFinanceira"));        
+        return conta;
+    }
+    
     public void delete(Contas contas) throws SQLException{
         Connection con = conexao.getConexao();  
         try(PreparedStatement pst = con.prepareStatement
-            ("delete from contas where id = ?")){
+            ("delete from contas where id_contas = ?")){
             pst.setInt(1, contas.getId());
             pst.executeUpdate();            
     }

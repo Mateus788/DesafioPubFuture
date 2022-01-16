@@ -4,11 +4,14 @@
  */
 package forms;
 
+import classes.Contas;
 import classes.Receita;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import servicos.ServicoContas;
 import servicos.ServicoReceita;
 
 public class FCadReceitas extends javax.swing.JFrame {
@@ -19,7 +22,9 @@ public class FCadReceitas extends javax.swing.JFrame {
     public FCadReceitas() {
         initComponents();
     }
-
+    
+    ServicoContas servicocontas = new ServicoContas();
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,12 +44,17 @@ public class FCadReceitas extends javax.swing.JFrame {
         jDataRecebimento = new javax.swing.JTextField();
         jDataRecebimentoEsperado = new javax.swing.JTextField();
         jDescricao = new javax.swing.JTextField();
-        jConta = new javax.swing.JTextField();
         jComboTipoReceita = new javax.swing.JComboBox<>();
         jEnviarReceitas = new javax.swing.JButton();
         jSair = new javax.swing.JButton();
+        jComboContas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setText("Valor");
 
@@ -99,18 +109,18 @@ public class FCadReceitas extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jEnviarReceitas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addComponent(jSair))
                     .addComponent(jComboTipoReceita, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jConta)
                     .addComponent(jDescricao)
                     .addComponent(jDataRecebimentoEsperado)
                     .addComponent(jDataRecebimento)
-                    .addComponent(jValor))
+                    .addComponent(jValor)
+                    .addComponent(jComboContas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -135,12 +145,12 @@ public class FCadReceitas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboContas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jComboTipoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jEnviarReceitas)
                     .addComponent(jSair))
@@ -168,7 +178,8 @@ public class FCadReceitas extends javax.swing.JFrame {
        receita.setDataRecebimento(jDataRecebimento.getText());
        receita.setDataRecebimentoEsperado(jDataRecebimentoEsperado.getText());
        receita.setDescricao(jDescricao.getText());
-       receita.setConta(jConta.getText());
+       Contas contas = (Contas) jComboContas.getSelectedItem();
+       receita.setConta(contas);
        receita.setTipoReceitas(jComboTipoReceita.getSelectedItem().toString());
 
         ServicoReceita servicoreceita = new ServicoReceita();
@@ -184,13 +195,29 @@ public class FCadReceitas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jEnviarReceitasMouseClicked
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        try {
+            this.carregarContas();
+        } catch (SQLException ex) {
+            Logger.getLogger(FCadReceitas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowActivated
+
+    public void carregarContas() throws SQLException{
+        ArrayList<Contas> lista = servicocontas.getListaContas();   
+        for (Contas u:lista){
+               jComboContas.addItem(u);
+        }      
+        this.limparTela();
+   }
+    
     
     public void limparTela(){
         jValor.setText("");
         jDataRecebimento.setText("");
         jDataRecebimentoEsperado.setText("");
         jDescricao.setText("");
-        jConta.setText("");
+        jComboContas.setSelectedIndex(-1);
         jComboTipoReceita.setSelectedIndex(-1);
     }
     
@@ -231,8 +258,8 @@ public class FCadReceitas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<Contas> jComboContas;
     private javax.swing.JComboBox<String> jComboTipoReceita;
-    private javax.swing.JTextField jConta;
     private javax.swing.JTextField jDataRecebimento;
     private javax.swing.JTextField jDataRecebimentoEsperado;
     private javax.swing.JTextField jDescricao;

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import servicos.ServicoContas;
 
 /**
  *
@@ -20,6 +21,7 @@ public class FEditDespesas extends javax.swing.JFrame {
 
     
     ServicoDespesas servicodespesas = new ServicoDespesas();
+    ServicoContas servicocontas = new ServicoContas();
     
     public FEditDespesas() {
         initComponents();
@@ -42,13 +44,12 @@ public class FEditDespesas extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jDataPagamento = new javax.swing.JTextField();
         jDataPagamentoEsperado = new javax.swing.JTextField();
-        jConta = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jValor = new javax.swing.JTextField();
         jTipoComboDespesa = new javax.swing.JComboBox<>();
-        jLabel9 = new javax.swing.JLabel();
         jAtualizar = new javax.swing.JButton();
         jDelet = new javax.swing.JButton();
+        jSair = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -94,13 +95,12 @@ public class FEditDespesas extends javax.swing.JFrame {
         });
 
         jTipoComboDespesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentacao", "Educacao", "Lazer", "Moradia", "Roupa", "Saude" }));
+        jTipoComboDespesa.setSelectedIndex(-1);
         jTipoComboDespesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTipoComboDespesaActionPerformed(evt);
             }
         });
-
-        jLabel9.setText("Conta");
 
         jAtualizar.setText("Atualizar");
         jAtualizar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -121,6 +121,13 @@ public class FEditDespesas extends javax.swing.JFrame {
             }
         });
 
+        jSair.setText("Sair");
+        jSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jSairMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,6 +139,8 @@ public class FEditDespesas extends javax.swing.JFrame {
                 .addComponent(jAtualizar)
                 .addGap(31, 31, 31)
                 .addComponent(jDelet)
+                .addGap(18, 18, 18)
+                .addComponent(jSair)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -140,15 +149,13 @@ public class FEditDespesas extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addComponent(jLabel3)
                         .addComponent(jLabel5)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel9))
+                        .addComponent(jLabel6))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jTipoComboDespesa, 0, 165, Short.MAX_VALUE)
                         .addComponent(jDataPagamentoEsperado, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jDataPagamento, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jValor, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jConta))
+                        .addComponent(jValor, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addContainerGap()))
         );
         layout.setVerticalGroup(
@@ -160,7 +167,8 @@ public class FEditDespesas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jAtualizar)
-                    .addComponent(jDelet))
+                    .addComponent(jDelet)
+                    .addComponent(jSair))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -180,11 +188,7 @@ public class FEditDespesas extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
                         .addComponent(jTipoComboDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel9))
-                    .addContainerGap(81, Short.MAX_VALUE)))
+                    .addContainerGap(110, Short.MAX_VALUE)))
         );
 
         pack();
@@ -228,14 +232,12 @@ public class FEditDespesas extends javax.swing.JFrame {
         jDataPagamento.setText(despesas.getDataPagamento());
         jDataPagamentoEsperado.setText(despesas.getDataPagamentoEsperado());
         jTipoComboDespesa.setSelectedItem(despesas.getTipoDespesa());
-        jConta.setText(despesas.getConta());
         
     }//GEN-LAST:event_jComboDespesasItemStateChanged
 
     private void jAtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAtualizarMouseClicked
        if (jComboDespesas.getSelectedIndex() >= 0){
             Despesas despesas = (Despesas) jComboDespesas.getSelectedItem();
-            despesas.setConta(jConta.getText());
             despesas.setDataPagamento(jDataPagamento.getText());
             despesas.setDataPagamentoEsperado(jDataPagamentoEsperado.getText());
             despesas.setTipoDespesa(jTipoComboDespesa.getSelectedItem().toString());
@@ -268,6 +270,10 @@ public class FEditDespesas extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jDeletMouseClicked
+
+    private void jSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSairMouseClicked
+        dispose();
+    }//GEN-LAST:event_jSairMouseClicked
     
     private void atualizarListaDespesas() throws SQLException{
         if (jComboDespesas.getItemCount() > 0){
@@ -286,7 +292,6 @@ public class FEditDespesas extends javax.swing.JFrame {
         jDataPagamento.setText("");
         jDataPagamentoEsperado.setText("");
         jTipoComboDespesa.setSelectedIndex(-1);
-        jConta.setText(""); 
         jComboDespesas.setSelectedIndex(-1);
     }
     
@@ -326,7 +331,6 @@ public class FEditDespesas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAtualizar;
     private javax.swing.JComboBox<Despesas> jComboDespesas;
-    private javax.swing.JTextField jConta;
     private javax.swing.JTextField jDataPagamento;
     private javax.swing.JTextField jDataPagamentoEsperado;
     private javax.swing.JButton jDelet;
@@ -335,8 +339,8 @@ public class FEditDespesas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JButton jSair;
     private javax.swing.JComboBox<String> jTipoComboDespesa;
     private javax.swing.JTextField jValor;
     // End of variables declaration//GEN-END:variables

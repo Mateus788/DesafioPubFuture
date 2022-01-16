@@ -52,7 +52,7 @@ public class Contas {
     
     @Override
     public String toString() {
-        return "Saldo: " + this.saldo + " Tipo Conta: " + this.tipoContas;
+        return "ID da conta: " + this.id + " Saldo: " + this.saldo + " Tipo Conta: " + this.tipoContas;
     }
     
     

@@ -6,10 +6,13 @@ public class Receita {
     private String dataRecebimento;
     private String dataRecebimentoEsperado;
     private String descricao;
-    private String conta;
+    private Contas conta;
     private String tipoReceitas;
 
-    public Receita(int id, float valor, String dataRecebimento, String dataRecebimentoEsperado, String descricao, String conta, String tipoReceitas) {
+    public Receita() {
+    }
+
+    public Receita(int id, float valor, String dataRecebimento, String dataRecebimentoEsperado, String descricao, Contas conta, String tipoReceitas) {
         this.id = id;
         this.valor = valor;
         this.dataRecebimento = dataRecebimento;
@@ -17,9 +20,6 @@ public class Receita {
         this.descricao = descricao;
         this.conta = conta;
         this.tipoReceitas = tipoReceitas;
-    }
-
-    public Receita() {
     }
 
     public int getId() {
@@ -62,11 +62,11 @@ public class Receita {
         this.descricao = descricao;
     }
 
-    public String getConta() {
+    public Contas getConta() {
         return conta;
     }
 
-    public void setConta(String conta) {
+    public void setConta(Contas conta) {
         this.conta = conta;
     }
 
@@ -82,7 +82,7 @@ public class Receita {
 
     @Override
     public String toString() {
-        return "Conta: " + this.conta + " Tipo de Receita: " + this.tipoReceitas + " Valor: " + this.valor;
+        return "ID Conta: " + this.conta.getId() + " Tipo de Receita: " + this.tipoReceitas + " Valor: " + this.valor;
     }
 
     
