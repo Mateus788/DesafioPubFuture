@@ -78,6 +78,41 @@ public class ServicoDespesas {
         }
 
         }
+    
+    public ArrayList<Despesas> getDespesasByDate(String primeiroPeriodo, String segundoPeriodo) throws SQLException{
+        Connection con = conexao.getConexao();
+        ArrayList<Despesas> lista = new ArrayList<>();
+        
+        Statement st = conexao.getConexao().createStatement();
+        ResultSet rs = st.executeQuery(
+                "select * from despesas, contas where dataPagamento between '" + primeiroPeriodo + "' and '" +  segundoPeriodo + "' and despesas.conta_id = contas.id_contas"
+        );
+        
+        while (rs.next()){
+          lista.add(new Despesas(rs.getInt("id_despesas"), rs.getFloat("valor"), rs.getString("dataPagamento"), 
+                  rs.getString("dataPagamentoEsperado"), rs.getString("tipoDespesa"), new Contas(rs.getInt("id_contas"), rs.getFloat("saldo"), rs.getString("tipoContas"), rs.getString("instituicaoFinanceira"))));
+        }
+        conexao.close();
+        return lista;
+    }
+    
+    public ArrayList<Despesas> getDespesaByTipo(String tipo) throws SQLException{
+        Connection con = conexao.getConexao();
+        ArrayList<Despesas> lista = new ArrayList<>();
+        
+        Statement st = conexao.getConexao().createStatement();
+        ResultSet rs = st.executeQuery(
+                "select * from despesas, contas where tipoDespesa = '" + tipo + "' and despesas.conta_id = contas.id_contas"
+        );
+        
+        while (rs.next()){
+          lista.add(new Despesas(rs.getInt("id_despesas"), rs.getFloat("valor"), rs.getString("dataPagamento"), 
+                  rs.getString("dataPagamentoEsperado"), rs.getString("tipoDespesa"), new Contas(rs.getInt("id_contas"), rs.getFloat("saldo"), rs.getString("tipoContas"), rs.getString("instituicaoFinanceira"))));
+        }
+        conexao.close();
+        return lista;        
+    }
+    
     }
 
 

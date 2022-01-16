@@ -4,29 +4,29 @@
  */
 package forms;
 
-import javax.swing.JOptionPane;
-import servicos.ServicoReceita;
-import classes.Receita;
+import classes.Despesas;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import servicos.ServicoDespesas;
 
 /**
  *
  * @author Pichau
  */
-public class FConsultTipoReceita extends javax.swing.JFrame {
+public class FConsultTipoDespesa extends javax.swing.JFrame {
 
     /**
-     * Creates new form FConsultTipoReceita
+     * Creates new form FConsultTipoDespesa
      */
-    public FConsultTipoReceita() {
+    public FConsultTipoDespesa() {
         initComponents();
     }
-    
-    ServicoReceita servicoreceita = new ServicoReceita();
 
+    ServicoDespesas servicodespesas = new ServicoDespesas();
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,19 +36,13 @@ public class FConsultTipoReceita extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboTipoReceita = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
         jBuscar = new javax.swing.JButton();
-        jComboReceitas = new javax.swing.JComboBox<>();
+        jComboDespesas = new javax.swing.JComboBox<>();
         jSair = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTipoComboDespesa = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jComboTipoReceita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Salario", "Presente", "Premio", "Outros" }));
-        jComboTipoReceita.setSelectedIndex(-1);
-        jComboTipoReceita.setAutoscrolls(true);
-
-        jLabel1.setText("Selecione o tipo de receita que você quer pesquisar");
 
         jBuscar.setText("Buscar");
         jBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -69,38 +63,41 @@ public class FConsultTipoReceita extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Selecione o tipo de despesa que você quer pesquisar");
+
+        jTipoComboDespesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentacao", "Educacao", "Lazer", "Moradia", "Roupa", "Saude" }));
+        jTipoComboDespesa.setSelectedIndex(-1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(59, 59, 59)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(37, 37, 37)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jComboTipoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jBuscar))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSair)
-                        .addComponent(jComboReceitas, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSair)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBuscar)
+                            .addComponent(jTipoComboDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboTipoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(18, 18, 18)
+                .addComponent(jTipoComboDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
                 .addComponent(jBuscar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addComponent(jComboReceitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(28, 28, 28)
+                .addComponent(jComboDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(jSair)
                 .addContainerGap())
         );
@@ -108,27 +105,32 @@ public class FConsultTipoReceita extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBuscarMouseClicked
+        if (jTipoComboDespesa.getSelectedIndex() < 0){
+            JOptionPane.showMessageDialog(rootPane, "Voce precisa selecionar um tipo de despesa");
+            jTipoComboDespesa.requestFocus();
+        }
+        
+
+
+        try {
+            jComboDespesas.removeAllItems();
+            ArrayList<Despesas> lista;
+            lista = servicodespesas.getDespesaByTipo(jTipoComboDespesa.getSelectedItem().toString());
+            for (Despesas u:lista){
+                jComboDespesas.addItem(u);
+            }  
+        } catch (SQLException ex) {
+            Logger.getLogger(FConsultTipoDespesa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+      
+        
+    }//GEN-LAST:event_jBuscarMouseClicked
+
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBuscarActionPerformed
-
-    private void jBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBuscarMouseClicked
-        if (jComboTipoReceita.getSelectedIndex() < 0){
-            JOptionPane.showMessageDialog(rootPane, "Voce precisa selecionar um tipo de receita");
-            jComboTipoReceita.requestFocus();
-        }
-        
-        try {
-            jComboReceitas.removeAllItems();
-            ArrayList<Receita> lista = servicoreceita.getReceitasByTipo(jComboTipoReceita.getSelectedItem().toString());
-            for (Receita u:lista){
-               jComboReceitas.addItem(u);
-             }  
-        } catch (SQLException ex) {
-            Logger.getLogger(FConsultTipoReceita.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }//GEN-LAST:event_jBuscarMouseClicked
 
     private void jSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSairMouseClicked
         dispose();
@@ -151,29 +153,29 @@ public class FConsultTipoReceita extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FConsultTipoReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FConsultTipoDespesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FConsultTipoReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FConsultTipoDespesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FConsultTipoReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FConsultTipoDespesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FConsultTipoReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FConsultTipoDespesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FConsultTipoReceita().setVisible(true);
+                new FConsultTipoDespesa().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBuscar;
-    private javax.swing.JComboBox<Receita> jComboReceitas;
-    private javax.swing.JComboBox<String> jComboTipoReceita;
+    private javax.swing.JComboBox<Despesas> jComboDespesas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jSair;
+    private javax.swing.JComboBox<String> jTipoComboDespesa;
     // End of variables declaration//GEN-END:variables
 }

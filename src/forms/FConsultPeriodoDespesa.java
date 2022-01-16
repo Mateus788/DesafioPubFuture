@@ -4,29 +4,29 @@
  */
 package forms;
 
-import javax.swing.JOptionPane;
-import classes.Receita;
+import classes.Despesas;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import servicos.ServicoReceita;
+import javax.swing.JOptionPane;
+import servicos.ServicoDespesas;
 
 /**
  *
  * @author Pichau
  */
-public class FConsultPeriodoReceita extends javax.swing.JFrame {
+public class FConsultPeriodoDespesa extends javax.swing.JFrame {
 
     /**
-     * Creates new form FConsultPeriodo
+     * Creates new form FConsultPeriodoDespesas
      */
-    public FConsultPeriodoReceita() {
+    public FConsultPeriodoDespesa() {
         initComponents();
     }
-    
-    ServicoReceita servicoreceitas = new ServicoReceita();
 
+    ServicoDespesas servicodespesas = new ServicoDespesas();
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,9 +39,9 @@ public class FConsultPeriodoReceita extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPrimeiroPeriodo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jComboDespesa = new javax.swing.JComboBox<>();
         jSegundoPeriodo = new javax.swing.JTextField();
         jBuscar = new javax.swing.JButton();
-        jComboReceita = new javax.swing.JComboBox<>();
         jSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,7 +84,7 @@ public class FConsultPeriodoReceita extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPrimeiroPeriodo))
                     .addComponent(jSegundoPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -101,17 +101,17 @@ public class FConsultPeriodoReceita extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jBuscar)
                 .addGap(18, 18, 18)
-                .addComponent(jComboReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addComponent(jComboDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jSair)
-                .addGap(34, 34, 34))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPrimeiroPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPrimeiroPeriodoActionPerformed
-        
+
     }//GEN-LAST:event_jPrimeiroPeriodoActionPerformed
 
     private void jBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBuscarMouseClicked
@@ -119,23 +119,27 @@ public class FConsultPeriodoReceita extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Voce precisa digitar o primeiro periodo");
             jPrimeiroPeriodo.requestFocus();
         }else{
-        
-        if (jSegundoPeriodo.getText().isEmpty()){
-            JOptionPane.showMessageDialog(rootPane, "Voce precisa digitar o segundo periodo");
-            jSegundoPeriodo.requestFocus();
-        }}
-        
+
+            if (jSegundoPeriodo.getText().isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Voce precisa digitar o segundo periodo");
+                jSegundoPeriodo.requestFocus();
+            }}
+
+
+
         try {
-            jComboReceita.removeAllItems();
-            ArrayList<Receita> lista = servicoreceitas.getReceitasByDate(jPrimeiroPeriodo.getText(), jSegundoPeriodo.getText());
-            for (Receita u:lista){
-               jComboReceita.addItem(u);
-             }                
+            jComboDespesa.removeAllItems();
+            ArrayList<Despesas> lista;
+            lista = servicodespesas.getDespesasByDate(jPrimeiroPeriodo.getText(), jSegundoPeriodo.getText());
+            for (Despesas u:lista){
+                jComboDespesa.addItem(u);
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(FConsultPeriodoReceita.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FConsultPeriodoDespesa.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
+
+
     }//GEN-LAST:event_jBuscarMouseClicked
 
     private void jSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSairMouseClicked
@@ -159,13 +163,13 @@ public class FConsultPeriodoReceita extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FConsultPeriodoReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FConsultPeriodoDespesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FConsultPeriodoReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FConsultPeriodoDespesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FConsultPeriodoReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FConsultPeriodoDespesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FConsultPeriodoReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FConsultPeriodoDespesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -173,14 +177,14 @@ public class FConsultPeriodoReceita extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FConsultPeriodoReceita().setVisible(true);
+                new FConsultPeriodoDespesa().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBuscar;
-    private javax.swing.JComboBox<Receita> jComboReceita;
+    private javax.swing.JComboBox<Despesas> jComboDespesa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jPrimeiroPeriodo;

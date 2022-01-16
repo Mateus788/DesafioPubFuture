@@ -32,6 +32,11 @@ public class Menu extends javax.swing.JFrame {
     public FConsultPeriodoReceita fconsultperiodoreceita;
     
     public FConsultTipoReceita fconsulttiporeceita;
+    
+    public FConsultPeriodoDespesa fconsultperiododespesas;
+    
+    public FConsultTipoDespesa fconsulttipodespesa;
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,6 +75,9 @@ public class Menu extends javax.swing.JFrame {
         jMenu11 = new javax.swing.JMenu();
         jConsultPeriodoReceitas = new javax.swing.JMenuItem();
         jConsultTipoReceitas = new javax.swing.JMenuItem();
+        jMenu12 = new javax.swing.JMenu();
+        jConsultPeriodoDespesas = new javax.swing.JMenuItem();
+        jConsultDespesas = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar2.add(jMenu1);
@@ -184,6 +192,26 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu10.add(jMenu11);
 
+        jMenu12.setText("Despesas");
+
+        jConsultPeriodoDespesas.setText("Período");
+        jConsultPeriodoDespesas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConsultPeriodoDespesasActionPerformed(evt);
+            }
+        });
+        jMenu12.add(jConsultPeriodoDespesas);
+
+        jConsultDespesas.setText("Tipo");
+        jConsultDespesas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConsultDespesasActionPerformed(evt);
+            }
+        });
+        jMenu12.add(jConsultDespesas);
+
+        jMenu10.add(jMenu12);
+
         jMenuBar4.add(jMenu10);
 
         setJMenuBar(jMenuBar4);
@@ -264,6 +292,20 @@ public class Menu extends javax.swing.JFrame {
         fconsulttiporeceita.setVisible(true);
     }//GEN-LAST:event_jConsultTipoReceitasActionPerformed
 
+    private void jConsultPeriodoDespesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultPeriodoDespesasActionPerformed
+     if (fconsultperiododespesas== null){
+            fconsultperiododespesas = new FConsultPeriodoDespesa();
+        }
+        fconsultperiododespesas.setVisible(true);
+    }//GEN-LAST:event_jConsultPeriodoDespesasActionPerformed
+
+    private void jConsultDespesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultDespesasActionPerformed
+     if (fconsulttipodespesa== null){
+            fconsulttipodespesa = new FConsultTipoDespesa();
+        }
+        fconsulttipodespesa.setVisible(true);
+    }//GEN-LAST:event_jConsultDespesasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -301,6 +343,8 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jCadReceitas;
+    private javax.swing.JMenuItem jConsultDespesas;
+    private javax.swing.JMenuItem jConsultPeriodoDespesas;
     private javax.swing.JMenuItem jConsultPeriodoReceitas;
     private javax.swing.JMenuItem jConsultTipoReceitas;
     private javax.swing.JMenuItem jContas;
@@ -312,6 +356,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu12;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
