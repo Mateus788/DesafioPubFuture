@@ -81,6 +81,27 @@ public class ServicoContas {
     }
         
     }
+    
+    public void transferirOrigem(Contas contaOrigem, float valor) throws SQLException{
+        Connection con = conexao.getConexao();  
+        try(PreparedStatement pst = con.prepareStatement
+            ("update contas set saldo = saldo - " +  valor + " where id_contas = ?")){
+            pst.setInt(1, contaOrigem.getId());
+            pst.executeUpdate();            
+    }
+              
+         
+    }
+    
+    public void transferirDestino(Contas contaDestino, float valor) throws SQLException{
+        Connection con = conexao.getConexao();  
+        try(PreparedStatement pst = con.prepareStatement
+            ("update contas set saldo = saldo + " +  valor + " where id_contas = ?")){
+            pst.setInt(1, contaDestino.getId());
+            pst.executeUpdate();            
+    }
+    }
+    
 }
 
        

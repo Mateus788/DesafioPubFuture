@@ -37,6 +37,8 @@ public class Menu extends javax.swing.JFrame {
     
     public FConsultTipoDespesa fconsulttipodespesa;
     
+    public FTransferencias ftransferencias;
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,6 +62,9 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar5 = new javax.swing.JMenuBar();
         jMenu8 = new javax.swing.JMenu();
         jMenu9 = new javax.swing.JMenu();
+        jMenuBar6 = new javax.swing.JMenuBar();
+        jMenu13 = new javax.swing.JMenu();
+        jMenu14 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         jMenuBar4 = new javax.swing.JMenuBar();
@@ -78,6 +83,8 @@ public class Menu extends javax.swing.JFrame {
         jMenu12 = new javax.swing.JMenu();
         jConsultPeriodoDespesas = new javax.swing.JMenuItem();
         jConsultDespesas = new javax.swing.JMenuItem();
+        jMenu15 = new javax.swing.JMenu();
+        jTransferir = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar2.add(jMenu1);
@@ -106,6 +113,12 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu9.setText("Edit");
         jMenuBar5.add(jMenu9);
+
+        jMenu13.setText("File");
+        jMenuBar6.add(jMenu13);
+
+        jMenu14.setText("Edit");
+        jMenuBar6.add(jMenu14);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -214,6 +227,18 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar4.add(jMenu10);
 
+        jMenu15.setText("Transferência");
+
+        jTransferir.setText("Transferir");
+        jTransferir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTransferirActionPerformed(evt);
+            }
+        });
+        jMenu15.add(jTransferir);
+
+        jMenuBar4.add(jMenu15);
+
         setJMenuBar(jMenuBar4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -306,6 +331,13 @@ public class Menu extends javax.swing.JFrame {
         fconsulttipodespesa.setVisible(true);
     }//GEN-LAST:event_jConsultDespesasActionPerformed
 
+    private void jTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTransferirActionPerformed
+     if (ftransferencias== null){
+            ftransferencias = new FTransferencias();
+        }
+        ftransferencias.setVisible(true);
+    }//GEN-LAST:event_jTransferirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -357,6 +389,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu12;
+    private javax.swing.JMenu jMenu13;
+    private javax.swing.JMenu jMenu14;
+    private javax.swing.JMenu jMenu15;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -370,9 +405,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuBar jMenuBar4;
     private javax.swing.JMenuBar jMenuBar5;
+    private javax.swing.JMenuBar jMenuBar6;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JMenuItem jTransferir;
     private javax.swing.JMenu jcadastro;
     // End of variables declaration//GEN-END:variables
 }
