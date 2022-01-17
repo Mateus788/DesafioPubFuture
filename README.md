@@ -1,4 +1,4 @@
-# Financas-ProWay
+# DesafioPubFuture
 Para rodar o projeto é necessario ter os seguintes aplicativos: 
 Apache NetBeans IDE versão 12.6, MySQL Workbench versão 8.0 CE e SQL server.
 Após baixar os aplicativos é necessario criar um banco de dados o qual tem o seguinte código.
